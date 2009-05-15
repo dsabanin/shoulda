@@ -8,6 +8,9 @@ class ProductTest < ActiveSupport::TestCase
     should_not_allow_values_for :size, "22"
     should_allow_values_for :size, "22kb"
     should_ensure_value_in_range :price, 0..99
+    
+    should_allow_values_for :product_type, "grocery", "electronic", 
+                            :message => /not included/
   end
 
   context "A tangible product" do

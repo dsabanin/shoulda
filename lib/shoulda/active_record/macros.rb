@@ -146,9 +146,9 @@ module Shoulda # :nodoc:
       #   should_allow_values_for :isbn, "isbn 1 2345 6789 0", "ISBN 1-2345-6789-0"
       #
       def should_allow_values_for(attribute, *good_values)
-        get_options!(good_values)
+        message = get_options!(good_values, :message)
         good_values.each do |value|
-          matcher = allow_value(value).for(attribute)
+          matcher = allow_value(value).for(attribute).with_message(message)
           should matcher.description do
             assert_accepts matcher, subject
           end
